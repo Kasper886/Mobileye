@@ -1,6 +1,6 @@
 resource "aws_instance" "web-servers" {
-  ami                    = ami_id
-  instance_type          = instance_type
+  ami                    = var.ami_id
+  instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.my_webserver.id]
   user_data              = <<EOF
 #!/bin/bash
