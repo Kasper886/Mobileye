@@ -1,6 +1,7 @@
 resource "aws_instance" "web-server" {
   ami                    = var.ami_id
   instance_type          = var.instance_type
+  subnet_id              = aws_subnet.test-vpc.id
   vpc_security_group_ids = [aws_security_group.web-servers.id]
   user_data              = <<EOF
 #!/bin/bash
