@@ -7,11 +7,15 @@ variable "aws_region" {
 }
 
 variable "instance_type" {
-  default = "t3.micro"
+  default = "t2.micro"
 }
 
 variable "ami_id" {
   default = "ami-09e67e426f25ce0d7"
+}
+
+variable "awskeypair" {
+  default = "mobileye-virginia"
 }
 
 variable "aws_vpc_cidr" {
