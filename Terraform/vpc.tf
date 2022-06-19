@@ -10,7 +10,6 @@ resource "aws_vpc" "test-vpc" {
 # Create public subnet
 resource "aws_subnet" "public" {
   cidr_block              = "10.10.2.0/24"
-  availability_zone       = data.aws_availability_zones.available.names[0]
   vpc_id                  = aws_vpc.test-vpc.id
   map_public_ip_on_launch = true
 
