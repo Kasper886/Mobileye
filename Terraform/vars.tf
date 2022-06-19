@@ -13,3 +13,7 @@ variable "instance_type" {
 variable "ami_id" {
   default = "ami-09e67e426f25ce0d7"
 }
+
+variable "aws_vpc_cidr" {
+  default = "10.10.0.0/16"
+}
