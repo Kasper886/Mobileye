@@ -10,6 +10,14 @@ sudo mkdir ~/Jenkins
 sudo cd ~/Jenkins
 sudo touch ~/Jenkins/Dockerfile
 
+sudo docker run --name jenkins-docker --rm --detach \
+  --privileged --network jenkins --network-alias docker \
+  --env DOCKER_TLS_CERTDIR=/certs \
+  --volume jenkins-docker-certs:/certs/client \
+  --volume jenkins-data:/var/jenkins_home \
+  --publish 2376:2376 \
+  docker:dind --storage-driver overlay2
+
 sudo cat <<EOF > ~/Jenkins/Dockerfile
 FROM jenkins/jenkins:2.332.3-jdk11
 USER root
