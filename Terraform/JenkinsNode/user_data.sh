@@ -10,7 +10,7 @@ sudo mkdir ~/Jenkins
 sudo cd ~/Jenkins
 sudo touch Dockerfile
 
-sudo cat << 'EOF' >> Dockerfile
+sudo cat << 'EOF' > Dockerfile
 FROM jenkins/jenkins:2.332.3-jdk11
 USER root
 RUN apt-get update && apt-get install -y lsb-release
