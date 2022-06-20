@@ -17,8 +17,6 @@ sudo docker run --name jenkins-docker --rm --detach \
   --publish 2376:2376 \
   docker:dind --storage-driver overlay2
 
-USER ubuntu
-
 sudo cat <<EOF > /home/ubuntu/Jenkins/Dockerfile
 FROM jenkins/jenkins:2.332.3-jdk11
 USER root
@@ -33,6 +31,8 @@ RUN apt-get update && apt-get install -y docker-ce-cli
 USER jenkins
 RUN jenkins-plugin-cli --plugins "blueocean:1.25.5 docker-workflow:1.28"
 EOF
+
+sudo usermod -aG docker $USER
 
 sudo docker build -t myjenkins-blueocean:2.332.3-1 .
 sudo docker network create jenkins
