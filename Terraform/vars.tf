@@ -14,8 +14,12 @@ variable "ami_id" {
   default = "ami-09e67e426f25ce0d7"
 }
 
-variable "awskeypair" {
-  default = "mobileye-virginia"
+variable "ssh-public-node" {
+  type = map(string)
+  default = {
+    "PATH_TO_PRIVATE_KEY" = "~/MyKey"
+    "PATH_TO_PUBLIC_KEY" = "~/MyKey.pub"
+  }
 }
 
 variable "aws_vpc_cidr" {
