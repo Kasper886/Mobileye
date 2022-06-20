@@ -5,9 +5,9 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
 sudo apt update
 sudo apt install -y docker-ce
-sudo mkdir ~/Jenkins
-sudo cd ~/Jenkins
-sudo touch ~/Jenkins/Dockerfile
+sudo mkdir /home/ubuntu/Jenkins
+sudo cd /home/ubuntu/Jenkins
+sudo touch /home/ubuntu/Jenkins/Dockerfile
 
 sudo docker run --name jenkins-docker --rm --detach \
   --privileged --network jenkins --network-alias docker \
@@ -17,7 +17,9 @@ sudo docker run --name jenkins-docker --rm --detach \
   --publish 2376:2376 \
   docker:dind --storage-driver overlay2
 
-sudo cat <<EOF > ~/Jenkins/Dockerfile
+USER ubuntu
+
+sudo cat <<EOF > /home/ubuntu/Jenkins/Dockerfile
 FROM jenkins/jenkins:2.332.3-jdk11
 USER root
 RUN apt-get update && apt-get install -y lsb-release
