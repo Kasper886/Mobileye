@@ -14,7 +14,7 @@ variable "ami_id" {
   default = "ami-09e67e426f25ce0d7"
 }
 
-variable "ssh-public-node" {
+variable "ssh-node" {
   type = map(string)
   default = {
     "PATH_TO_PRIVATE_KEY" = "~/MyKey"
